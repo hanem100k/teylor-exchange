@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespass
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  api-server:
+    build:
+      context: .
+    container_name: teylor-take-home-project
+    image: teylor-take-home-image
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - ./logs:/logs
+    ports:
+      - "8080:8080"

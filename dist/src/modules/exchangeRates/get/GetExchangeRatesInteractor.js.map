@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "file": "LatestExchangeRatesInteractor.js",
+    "sourceRoot": "",
+    "sources": [
+        "../../../../../src/modules/exchangeRates/get/LatestExchangeRatesInteractor.ts"
+    ],
+    "names": [],
+    "mappings": ""
+}

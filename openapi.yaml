@@ -1,0 +1,128 @@
+---
+openapi: 3.0.3
+info:
+  title: Teylor Exchange APi Service
+  version: 1.0.0
+  description: Teylor Exchange API Service endpoints
+  contact:
+    email: abelsimon48@gmail.com
+    name: Abel Simon
+servers:
+  - url: http://localhost:8080/
+tags:
+  - name: Teylor
+    description: open api specs for Teylor Exchange service
+
+paths:
+  /exchange.rates.add:
+    post:
+      tags:
+        - "Exchange Rates"
+      summary: Adds new exchange rate of a symbol
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/addExchangeRate"
+
+      responses:
+        200:
+          description: Responds with created record.
+
+  /exchange.rates.search:
+    post:
+      tags:
+        - "Exchange Rates"
+      summary: Searches for an exchange rate for a symbol betwene a period
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/searchExchangeRate"
+
+      responses:
+        200:
+          description: Responds with created rates for specified range
+
+  /exchange.rates.list:
+    post:
+      tags:
+        - "Exchange Rates"
+      summary: Will list exchange rates by a specified day for existing symbols
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - "ratesForDate"
+              properties:
+                rateForDate:
+                  type: string
+                  example: "2021-02-07"
+
+      responses:
+        200:
+          description: Responds with most recent exchange rataes for existing symbols
+
+  /exchange.rates.get.latest:
+    post:
+      tags:
+        - "Exchange Rates"
+      summary: Fetches latest rate for specified symbol
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - symbol
+              properties:
+                symbol:
+                  type: string
+                  example: CHFUSD
+
+      responses:
+        200:
+          description: Responds with latest rate for specified symbol
+
+components:
+  schemas:
+    addExchangeRate:
+      type: object
+      required:
+        - rateForDate
+        - symbol
+        - rate
+      properties:
+        rateForDate:
+          type: string
+          example: "2021-02-07"
+        symbol:
+          type: string
+          example: CHFUSD
+        rate:
+          type: number
+          example: 1.14242
+
+    searchExchangeRate:
+      type: object
+      required:
+        - dateRange
+        - symbol
+      properties:
+        dateRange:
+          type: object
+          properties:
+            from:
+              type: string
+              example: "2021-02-06"
+            to:
+              type: string
+              example: "2021-02-07"
+        symbol:
+          type: string

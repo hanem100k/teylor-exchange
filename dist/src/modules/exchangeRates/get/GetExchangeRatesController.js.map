@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "file": "LatestExchangeRatesController.js",
+    "sourceRoot": "",
+    "sources": [
+        "../../../../../src/modules/exchangeRates/get/LatestExchangeRatesController.ts"
+    ],
+    "names": [],
+    "mappings": ""
+}

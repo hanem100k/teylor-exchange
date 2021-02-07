@@ -1,0 +1,64 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API Service",
+        "version": "1.0.0",
+        "description": "API Service endpoints",
+        "contact": {
+            "email": "abel.simon@saltandpepper.co",
+            "name": "Abel Simon"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Hello World",
+            "description": "Swagger template for new projects"
+        }
+    ],
+    "paths": {
+        "/hello/world": {
+            "post": {
+                "tags": [
+                    "hello"
+                ],
+                "summary": "Get a Hello world message inside swagger",
+                "operationId": "hello-fetch",
+                "requestBody": {
+                    "description": "New template user",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/components/schemas/hello"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Greeting sent",
+                        "schema": {
+                            "$ref": "#/components/schemas/hello"
+                        }
+                    }
+                },
+                "500": {
+                    "description": "Server error"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "hello": {
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "Abel"
+                    }
+                }
+            }
+        }
+    }
+}
