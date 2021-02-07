@@ -8,11 +8,10 @@
   "main": "dist/index.js",
   "scripts": {
     "eslint": "eslint src/bin/server.ts",
-    "postinstall": "chmod +x ./scripts/dev.sh",
     "build": "tsc",
     "lint": "./node_modules/eslint/bin/eslint.js  src --ext .ts",
-    "start": "node dist/src/bin/server.js",
-    "dev:start": "nodemon dist/src/bin/server.js",
+    "start": "node dist/bin/server.js",
+    "copyFx": "cp -r src/core/exchangeRates/fxData dist/core/exchangeRates/",
     "test": "jest",
     "lint:fix": "./node_modules/eslint/bin/eslint.js  src --ext .ts --fix"
   },

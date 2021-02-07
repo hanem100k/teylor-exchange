@@ -17,7 +17,7 @@ const startServer = async () => {
 	let retries = 5;
 	while (retries) {
 		try {
-			// await createConnectionPool();
+			await createConnectionPool();
 			app.listen(app.get("port"), (): void => {
 				console.log(
           "\x1b[36m%s\x1b[0m", // eslint-disable-line

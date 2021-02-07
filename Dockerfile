@@ -12,6 +12,9 @@ COPY . .
 # Build dist
 RUN npm run build
 
+# After compilation phase, copy non ts files to distribution
+RUN npm run copyFx
+
 # Expose port 8080
 EXPOSE 8080
 
